@@ -4,6 +4,10 @@ This Android app is a UI study which aims to provide convenient controls for you
 ## 🖋️ Figma Sketch 
 ![UI sketch](https://github.com/dalu-wins/headphones-control/blob/main/Headphones%20Control%20Center.png)
 
+Usefull additions for a good UX:
+- reset 3D object rotation
+- fast way to turn off headphones 
+
 ## 📱 Flutter Implementation 
 No implementation yet...
 
