@@ -1,0 +1,4 @@
+enum PowerStatus {
+  on,
+  off;
+}
