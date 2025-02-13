@@ -6,7 +6,8 @@ This Android app is a UI study which aims to provide convenient controls for you
 
 Useful additions for a good UX:
 - reset 3D object rotation
-- fast way to turn off headphones 
+- fast way to turn off headphones
+- switch play/pause and album art positions 
 
 ## 📱 Flutter Implementation 
 No implementation yet...
