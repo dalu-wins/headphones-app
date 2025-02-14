@@ -10,5 +10,11 @@ Useful additions for a good UX:
 - switch play/pause and album art positions 
 
 ## 📱 Flutter Implementation 
-No implementation yet...
+| ![Image 1](https://github.com/dalu-wins/headphones-control/blob/main/screenshots/portrait_light.png) | ![Image 2](https://github.com/dalu-wins/headphones-control/blob/main/screenshots/landscape_light.png) |
+|-------------------------------|-------------------------------|
+| Portrait Light                | Landscape Light               |
+
+| ![Image 3](https://github.com/dalu-wins/headphones-control/blob/main/screenshots/portrait_dark.png) | ![Image 4](https://github.com/dalu-wins/headphones-control/blob/main/screenshots/landscape_dark.png) |
+|-------------------------------|-------------------------------|
+| Portrait Dark                 | Landscape Dark                |
 

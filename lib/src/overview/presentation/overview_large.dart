@@ -37,6 +37,7 @@ class OverviewLarge extends StatelessWidget {
           Expanded(
             flex: 1,
             child: InfoWidget(
+              height: double.infinity,
               controller: controller,
               cameraOrbit: cameraOrbit,
               headphones: headphones,

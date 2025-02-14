@@ -70,6 +70,7 @@ class InfoWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Row(
               mainAxisAlignment: centralized
@@ -111,8 +112,6 @@ class InfoWidget extends StatelessWidget {
                   maxCameraOrbit: "auto 150deg 100",
                   exposure: 1,
                   interactionPrompt: InteractionPrompt.none,
-                  loading: Loading.eager,
-                  reveal: Reveal.auto,
                 ),
               ),
             ),
