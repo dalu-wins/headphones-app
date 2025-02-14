@@ -54,77 +54,74 @@ class EqualizerWidgetState extends State<EqualizerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 350,
-      child: Column(
-        children: [
-          SizedBox(
-            height: 40,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: _presets.map((preset) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                  child: ChoiceChip(
-                    label: Text(preset),
-                    selected: _selectedPreset == preset,
-                    onSelected: (bool selected) {
-                      if (selected) {
-                        _applyPreset(preset);
-                      }
-                    },
-                  ),
-                );
-              }).toList(),
-            ),
+    return Column(
+      children: [
+        SizedBox(
+          height: 40,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: _presets.map((preset) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: ChoiceChip(
+                  label: Text(preset),
+                  selected: _selectedPreset == preset,
+                  onSelected: (bool selected) {
+                    if (selected) {
+                      _applyPreset(preset);
+                    }
+                  },
+                ),
+              );
+            }).toList(),
           ),
-          const SizedBox(height: 20),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: List.generate(
-                _frequencies.length,
-                (index) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("${_frequencies[index].toInt()} Hz",
-                          style: const TextStyle(fontWeight: FontWeight.bold)),
-                      Expanded(
-                        child: RotatedBox(
-                          quarterTurns: -1,
-                          child: Slider(
-                            min: -10,
-                            max: 10,
-                            value: _levels[index],
-                            onChanged: (value) {
-                              setState(() {
-                                _levels[index] = value;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                      Text("${_levels[index].toInt()} dB"),
-                    ],
-                  );
-                },
-              ),
+        ),
+        const SizedBox(height: 20),
+        // Expanded(
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //     children: List.generate(
+        //       _frequencies.length,
+        //       (index) {
+        //         return Column(
+        //           mainAxisAlignment: MainAxisAlignment.center,
+        //           children: [
+        //             Text("${_frequencies[index].toInt()} Hz",
+        //                 style: const TextStyle(fontWeight: FontWeight.bold)),
+        //             Expanded(
+        //               child: RotatedBox(
+        //                 quarterTurns: -1,
+        //                 child: Slider(
+        //                   min: -10,
+        //                   max: 10,
+        //                   value: _levels[index],
+        //                   onChanged: (value) {
+        //                     setState(() {
+        //                       _levels[index] = value;
+        //                     });
+        //                   },
+        //                 ),
+        //               ),
+        //             ),
+        //             Text("${_levels[index].toInt()} dB"),
+        //           ],
+        //         );
+        //       },
+        //     ),
+        //   ),
+        // ),
+        // const SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text("Boost Bass"),
+            Switch(
+              value: _boostedBass,
+              onChanged: _toggleBassBoost,
             ),
-          ),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text("Boost Bass"),
-              Switch(
-                value: _boostedBass,
-                onChanged: _toggleBassBoost,
-              ),
-            ],
-          )
-        ],
-      ),
+          ],
+        )
+      ],
     );
   }
 }
