@@ -31,7 +31,7 @@ class SettingsColumn extends StatelessWidget {
         children: [
           SettingsWidget(
             settingName: "Ambient Sound",
-            isExpanded: false,
+            isExpanded: true,
             settingsWidget: Column(
               spacing: 8,
               children: [
@@ -52,7 +52,7 @@ class SettingsColumn extends StatelessWidget {
           ),
           SettingsWidget(
             settingName: "Equalizer",
-            isExpanded: false,
+            isExpanded: true,
             settingsWidget: Column(
               spacing: 8,
               children: [
