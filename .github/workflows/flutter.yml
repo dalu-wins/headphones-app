@@ -1,4 +1,4 @@
-name: Dart
+name: Flutter
 
 on:
   push:
@@ -13,19 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Set up Flutter SDK instead of Dart SDK
+      # Set up Flutter SDK with explicit stable version
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'stable'
+          flutter-version: '3.27.3'  # Specify the version explicitly, replace with your desired Flutter version
 
       # Install dependencies using Flutter
       - name: Install dependencies
         run: flutter pub get
-
-      # Uncomment this step to verify the use of 'flutter format' on each commit.
-      # - name: Verify formatting
-      #   run: flutter format --output=none --set-exit-if-changed .
 
       # Analyze project source using Flutter analysis
       - name: Analyze project source
