@@ -48,7 +48,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
       bottomNavigationBar: MusicBar(),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-          if (constraints.maxWidth > 600) {
+          if (constraints.maxWidth > 840) {
             return OverviewLarge(
               headphones: headphones,
               setNoiseCancellingLevel: setNoiseCancellingLevel,
