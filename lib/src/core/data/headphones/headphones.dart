@@ -1,6 +1,6 @@
-import 'package:headphones_app/src/core/data/equalizer_mode.dart';
-import 'package:headphones_app/src/core/data/noise_status.dart';
-import 'package:headphones_app/src/core/data/power_status.dart';
+import 'package:headphones_app/src/core/data/headphones/equalizer_mode.dart';
+import 'package:headphones_app/src/core/data/headphones/noise_status.dart';
+import 'package:headphones_app/src/core/data/headphones/power_status.dart';
 
 class Headphones {
   String name;
@@ -43,9 +43,9 @@ final Headphones airPodsMax = Headphones(
   80,
   "assets/models/apple_airpods_max.glb",
   PowerStatus.on,
-  NoiseCancellingStatus.off,
-  50,
-  50,
-  EqualizerMode.flat,
+  NoiseCancellingStatus.on,
+  75,
+  25,
+  EqualizerMode.rock,
   false,
 );

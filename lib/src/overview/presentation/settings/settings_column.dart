@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:headphones_app/src/core/data/headphones.dart';
-import 'package:headphones_app/src/core/data/noise_status.dart';
+import 'package:headphones_app/src/core/data/headphones/headphones.dart';
+import 'package:headphones_app/src/core/data/headphones/noise_status.dart';
 import 'package:headphones_app/src/overview/presentation/settings/equalizer/equalizer_widget.dart';
 import 'package:headphones_app/src/overview/presentation/settings/noise_cancelling/nc_segmented_button.dart';
 import 'package:headphones_app/src/overview/presentation/settings/noise_cancelling/noise_cancelling_bar.dart';
@@ -31,7 +31,7 @@ class SettingsColumn extends StatelessWidget {
         children: [
           SettingsWidget(
             settingName: "Ambient Sound",
-            isExpanded: true,
+            isExpanded: false,
             settingsWidget: Column(
               spacing: 8,
               children: [
@@ -52,7 +52,7 @@ class SettingsColumn extends StatelessWidget {
           ),
           SettingsWidget(
             settingName: "Equalizer",
-            isExpanded: true,
+            isExpanded: false,
             settingsWidget: Column(
               spacing: 8,
               children: [

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:headphones_app/src/core/data/headphones.dart';
-import 'package:headphones_app/src/core/data/noise_status.dart';
+import 'package:headphones_app/src/core/data/headphones/headphones.dart';
+import 'package:headphones_app/src/core/data/headphones/noise_status.dart';
+import 'package:headphones_app/src/overview/presentation/music_player/music_bar.dart';
 import 'package:headphones_app/src/overview/presentation/overview_compact.dart';
 import 'package:headphones_app/src/overview/presentation/overview_large.dart';
 import 'package:o3d/o3d.dart';
@@ -44,6 +45,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
     _setUiStyle();
 
     return Scaffold(
+      bottomNavigationBar: MusicBar(),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           if (constraints.maxWidth > 600) {

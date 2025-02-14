@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:headphones_app/src/core/data/headphones.dart';
-import 'package:headphones_app/src/core/data/noise_status.dart';
+import 'package:headphones_app/src/core/data/headphones/headphones.dart';
+import 'package:headphones_app/src/core/data/headphones/noise_status.dart';
 import 'package:headphones_app/src/overview/presentation/info_view/info_widget.dart';
 import 'package:headphones_app/src/overview/presentation/settings/settings_column.dart';
 import 'package:o3d/o3d.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:headphones_app/src/core/data/headphones.dart';
+import 'package:headphones_app/src/core/data/headphones/headphones.dart';
 import 'package:headphones_app/src/overview/presentation/info_view/battery/battery_indicator.dart';
 import 'package:o3d/o3d.dart';
 
