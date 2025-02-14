@@ -27,9 +27,11 @@ class _OverviewScreenState extends State<OverviewScreen> {
     50,
   );
 
-  void _updateSystemUI() {
-    Brightness brightness =
-        WidgetsBinding.instance.platformDispatcher.platformBrightness;
+  void _setUiStyle() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
+    // Update the system UI based on the current brightness
+    Brightness brightness = MediaQuery.of(context).platformBrightness;
     bool isDarkMode = brightness == Brightness.dark;
 
     SystemChrome.setSystemUIOverlayStyle(
@@ -39,28 +41,17 @@ class _OverviewScreenState extends State<OverviewScreen> {
         systemNavigationBarContrastEnforced: false,
         systemStatusBarContrastEnforced: false,
         statusBarIconBrightness:
-            isDarkMode ? Brightness.light : Brightness.dark, // Adjust icons
+            isDarkMode ? Brightness.light : Brightness.dark,
         systemNavigationBarIconBrightness:
-            isDarkMode ? Brightness.light : Brightness.dark, // Nav icons
+            isDarkMode ? Brightness.light : Brightness.dark,
       ),
     );
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _updateSystemUI(); // Update UI on theme change
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-    _updateSystemUI();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    _setUiStyle();
+
     return Scaffold(
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {

@@ -10,8 +10,16 @@ class EqualizerWidget extends StatefulWidget {
 class EqualizerWidgetState extends State<EqualizerWidget> {
   final List<double> _frequencies = [60, 230, 910, 3600, 14000];
   final List<double> _levels = [0, 0, 0, 0, 0];
-  final List<String> _presets = ["Flat", "Rock", "Pop", "Jazz", "Classical"];
+  final List<String> _presets = [
+    "Flat",
+    "Rock",
+    "Pop",
+    "Jazz",
+    "Classical",
+    "Custom"
+  ];
   String _selectedPreset = "Flat";
+  bool _boostedBass = false;
 
   void _applyPreset(String preset) {
     setState(() {
@@ -29,16 +37,25 @@ class EqualizerWidgetState extends State<EqualizerWidget> {
         case "Classical":
           _levels.setAll(0, [4, -1, -3, 5, 3]);
           break;
+        case "Custom":
+          _levels.setAll(0, [-4, -2, 0, 2, 4]);
+          break;
         default:
           _levels.fillRange(0, _levels.length, 0);
       }
     });
   }
 
+  void _toggleBassBoost(bool value) {
+    setState(() {
+      _boostedBass = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
+      height: 350,
       child: Column(
         children: [
           SizedBox(
@@ -65,33 +82,47 @@ class EqualizerWidgetState extends State<EqualizerWidget> {
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: List.generate(_frequencies.length, (index) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("${_frequencies[index].toInt()} Hz",
-                        style: const TextStyle(fontWeight: FontWeight.bold)),
-                    Expanded(
-                      child: RotatedBox(
-                        quarterTurns: -1,
-                        child: Slider(
-                          min: -10,
-                          max: 10,
-                          value: _levels[index],
-                          onChanged: (value) {
-                            setState(() {
-                              _levels[index] = value;
-                            });
-                          },
+              children: List.generate(
+                _frequencies.length,
+                (index) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("${_frequencies[index].toInt()} Hz",
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      Expanded(
+                        child: RotatedBox(
+                          quarterTurns: -1,
+                          child: Slider(
+                            min: -10,
+                            max: 10,
+                            value: _levels[index],
+                            onChanged: (value) {
+                              setState(() {
+                                _levels[index] = value;
+                              });
+                            },
+                          ),
                         ),
                       ),
-                    ),
-                    Text("${_levels[index].toInt()} dB"),
-                  ],
-                );
-              }),
+                      Text("${_levels[index].toInt()} dB"),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text("Boost Bass"),
+              Switch(
+                value: _boostedBass,
+                onChanged: _toggleBassBoost,
+              ),
+            ],
+          )
         ],
       ),
     );
