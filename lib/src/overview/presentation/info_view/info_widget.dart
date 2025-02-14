@@ -72,8 +72,24 @@ class InfoWidget extends StatelessWidget {
         child: Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: centralized
+                  ? MainAxisAlignment.spaceBetween
+                  : MainAxisAlignment.end,
               children: [
+                if (centralized)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      headphones.name,
+                      style: const TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                 IconButton(
                   onPressed: () => _showPowerOffDialog(context),
                   icon: Icon(Icons.power_settings_new),
@@ -98,19 +114,20 @@ class InfoWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                headphones.name,
-                style: const TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
+            if (!centralized)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  headphones.name,
+                  style: const TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
                 ),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
               ),
-            ),
             const SizedBox(height: 8), // Spacing
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -126,7 +143,7 @@ class InfoWidget extends StatelessWidget {
                 ),
               ],
             ),
-            if (centralized) SizedBox(height: 48),
+            if (centralized) SizedBox(height: 32),
           ],
         ),
       ),
