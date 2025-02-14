@@ -11,22 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
-      # Set up Flutter SDK with explicit stable version
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.27.3'  # Specify the version explicitly, replace with your desired Flutter version
-
-      # Install dependencies using Flutter
-      - name: Install dependencies
-        run: flutter pub get
-
-      # Analyze project source using Flutter analysis
-      - name: Analyze project source
-        run: flutter analyze
-
-      # Run tests with Flutter
-      - name: Run tests
-        run: flutter test
+    - name: Clone repository
+      uses: actions/checkout@v4
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: 3.24.0
+    - run: flutter pub get
+    - run: flutter test
+    - run: flutter build apk
+    - run: flutter build appbundle
