@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:headphones_app/src/core/data/equalizer_mode.dart';
+import 'package:headphones_app/src/core/data/headphones.dart';
+import 'package:headphones_app/src/overview/presentation/settings/equalizer/frequency_graph.dart';
 
 class EqualizerWidget extends StatefulWidget {
-  const EqualizerWidget({super.key});
+  final Headphones headphones;
+
+  const EqualizerWidget({
+    super.key,
+    required this.headphones,
+  });
 
   @override
   EqualizerWidgetState createState() => EqualizerWidgetState();
@@ -9,114 +17,70 @@ class EqualizerWidget extends StatefulWidget {
 
 class EqualizerWidgetState extends State<EqualizerWidget> {
   final List<double> _frequencies = [60, 230, 910, 3600, 14000];
-  final List<double> _levels = [0, 0, 0, 0, 0];
-  final List<String> _presets = [
-    "Flat",
-    "Rock",
-    "Pop",
-    "Jazz",
-    "Classical",
-    "Custom"
-  ];
-  String _selectedPreset = "Flat";
-  bool _boostedBass = false;
+  List<double> _levels = [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]; // Remove `final` to allow reassignment
 
-  void _applyPreset(String preset) {
-    setState(() {
-      _selectedPreset = preset;
-      switch (preset) {
-        case "Rock":
-          _levels.setAll(0, [3, 5, -2, 4, 1]);
-          break;
-        case "Pop":
-          _levels.setAll(0, [5, 3, 1, -1, -2]);
-          break;
-        case "Jazz":
-          _levels.setAll(0, [-2, 3, 5, 2, 1]);
-          break;
-        case "Classical":
-          _levels.setAll(0, [4, -1, -3, 5, 3]);
-          break;
-        case "Custom":
-          _levels.setAll(0, [-4, -2, 0, 2, 4]);
-          break;
-        default:
-          _levels.fillRange(0, _levels.length, 0);
-      }
-    });
-  }
+  // Get all enum values
+  List<EqualizerMode> modes = EqualizerMode.values;
 
   void _toggleBassBoost(bool value) {
     setState(() {
-      _boostedBass = value;
+      widget.headphones.boostBass = value;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _levels =
+        List.from(widget.headphones.equalizerMode.levels); // Copy the list
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      spacing: 16,
       children: [
         SizedBox(
           height: 40,
           child: ListView(
             scrollDirection: Axis.horizontal,
-            children: _presets.map((preset) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                child: ChoiceChip(
-                  label: Text(preset),
-                  selected: _selectedPreset == preset,
-                  onSelected: (bool selected) {
-                    if (selected) {
-                      _applyPreset(preset);
-                    }
-                  },
-                ),
-              );
-            }).toList(),
+            children: modes.map(
+              (preset) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                  child: ChoiceChip(
+                    label: Text(preset.name),
+                    selected: widget.headphones.equalizerMode == preset,
+                    onSelected: (bool selected) {
+                      if (selected) {
+                        setState(() {
+                          widget.headphones.equalizerMode = preset;
+                          _levels = List.from(preset.levels); // Copy the list
+                        });
+                      }
+                    },
+                  ),
+                );
+              },
+            ).toList(),
           ),
         ),
-        const SizedBox(height: 20),
-        // Expanded(
-        //   child: Row(
-        //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //     children: List.generate(
-        //       _frequencies.length,
-        //       (index) {
-        //         return Column(
-        //           mainAxisAlignment: MainAxisAlignment.center,
-        //           children: [
-        //             Text("${_frequencies[index].toInt()} Hz",
-        //                 style: const TextStyle(fontWeight: FontWeight.bold)),
-        //             Expanded(
-        //               child: RotatedBox(
-        //                 quarterTurns: -1,
-        //                 child: Slider(
-        //                   min: -10,
-        //                   max: 10,
-        //                   value: _levels[index],
-        //                   onChanged: (value) {
-        //                     setState(() {
-        //                       _levels[index] = value;
-        //                     });
-        //                   },
-        //                 ),
-        //               ),
-        //             ),
-        //             Text("${_levels[index].toInt()} dB"),
-        //           ],
-        //         );
-        //       },
-        //     ),
-        //   ),
-        // ),
-        // const SizedBox(height: 20),
+        SizedBox(
+          height: 150,
+          child: FrequencyGraph(frequencies: _frequencies, levels: _levels),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text("Boost Bass"),
             Switch(
-              value: _boostedBass,
+              value: widget.headphones.boostBass,
               onChanged: _toggleBassBoost,
             ),
           ],

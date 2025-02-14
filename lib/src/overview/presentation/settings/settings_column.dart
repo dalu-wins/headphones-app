@@ -52,7 +52,15 @@ class SettingsColumn extends StatelessWidget {
           ),
           SettingsWidget(
             settingName: "Equalizer",
-            settingsWidget: EqualizerWidget(),
+            isExpanded: true,
+            settingsWidget: Column(
+              spacing: 8,
+              children: [
+                EqualizerWidget(
+                  headphones: headphones,
+                ),
+              ],
+            ),
           ),
         ],
       ),
