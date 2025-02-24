@@ -51,6 +51,7 @@ class _MusicBarState extends State<MusicBar> {
 
     /// Stream the incoming notification events
     NotificationListenerService.notificationsStream.listen((event) {
+      print("Current notification: $event");
       bool? removed = event.hasRemoved;
       if (removed != null) {
         if (removed) {
@@ -68,8 +69,12 @@ class _MusicBarState extends State<MusicBar> {
         }
       }
 
-      print("Current notification: $event");
-      if (event.packageName == "com.google.android.youtube") {
+      List<String> allowed = [
+        "com.android.chrome",
+        "com.google.android.youtube",
+      ];
+
+      if (allowed.contains(event.packageName)) {
         setState(() {
           songTitle = event.title ?? songTitle;
           artistName = event.content ?? artistName;
