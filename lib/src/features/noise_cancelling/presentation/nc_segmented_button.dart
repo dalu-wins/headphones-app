@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:headphones_app/src/core/data/headphones/noise_status.dart';
+import 'package:headphones_app/src/features/noise_cancelling/domain/noise_status.dart';
 
 class NCSegmentedButton extends StatelessWidget {
   final NoiseCancellingStatus noiseCancellingStatus;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:headphones_app/src/core/data/headphones/headphones.dart';
-import 'package:headphones_app/src/overview/presentation/info_view/battery/battery_indicator.dart';
+import 'package:headphones_app/src/core/domain/headphones.dart';
+import 'package:headphones_app/src/features/battery_indicator/presentation/battery_indicator.dart';
 import 'package:o3d/o3d.dart';
 
 class InfoWidget extends StatelessWidget {

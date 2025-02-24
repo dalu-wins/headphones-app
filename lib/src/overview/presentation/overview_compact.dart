@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:headphones_app/src/core/data/headphones/headphones.dart';
-import 'package:headphones_app/src/core/data/headphones/noise_status.dart';
-import 'package:headphones_app/src/overview/presentation/info_view/info_widget.dart';
-import 'package:headphones_app/src/overview/presentation/settings/settings_column.dart';
+import 'package:headphones_app/src/core/domain/headphones.dart';
+import 'package:headphones_app/src/features/noise_cancelling/domain/noise_status.dart';
+import 'package:headphones_app/src/overview/presentation/widgets/info_widget.dart';
+import 'package:headphones_app/src/overview/presentation/widgets/settings_column_widget.dart';
 import 'package:o3d/o3d.dart';
 
 class OverviewCompact extends StatelessWidget {

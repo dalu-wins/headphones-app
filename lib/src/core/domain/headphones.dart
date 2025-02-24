@@ -1,6 +1,6 @@
-import 'package:headphones_app/src/core/data/headphones/equalizer_mode.dart';
-import 'package:headphones_app/src/core/data/headphones/noise_status.dart';
-import 'package:headphones_app/src/core/data/headphones/power_status.dart';
+import 'package:headphones_app/src/features/battery_indicator/domain/power_status.dart';
+import 'package:headphones_app/src/features/equalizer/domain/equalizer_mode.dart';
+import 'package:headphones_app/src/features/noise_cancelling/domain/noise_status.dart';
 
 class Headphones {
   String name;

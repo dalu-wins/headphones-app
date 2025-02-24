@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:headphones_app/src/core/data/headphones/headphones.dart';
-import 'package:headphones_app/src/core/data/headphones/noise_status.dart';
-import 'package:headphones_app/src/overview/presentation/settings/equalizer/equalizer_widget.dart';
-import 'package:headphones_app/src/overview/presentation/settings/noise_cancelling/nc_segmented_button.dart';
-import 'package:headphones_app/src/overview/presentation/settings/noise_cancelling/noise_cancelling_bar.dart';
-import 'package:headphones_app/src/overview/presentation/settings/noise_cancelling/pass_through_bar.dart';
-import 'package:headphones_app/src/overview/presentation/settings/settings_widget.dart';
+import 'package:headphones_app/src/core/domain/headphones.dart';
+import 'package:headphones_app/src/features/noise_cancelling/domain/noise_status.dart';
+import 'package:headphones_app/src/features/equalizer/presentation/equalizer_widget.dart';
+import 'package:headphones_app/src/features/noise_cancelling/presentation/nc_segmented_button.dart';
+import 'package:headphones_app/src/features/noise_cancelling/presentation/noise_cancelling_bar.dart';
+import 'package:headphones_app/src/features/noise_cancelling/presentation/pass_through_bar.dart';
+import 'package:headphones_app/src/overview/presentation/widgets/single_settings_widget.dart';
 
 class SettingsColumn extends StatelessWidget {
   final Headphones headphones;
@@ -31,7 +31,7 @@ class SettingsColumn extends StatelessWidget {
         children: [
           SettingsWidget(
             settingName: "Ambient Sound",
-            isExpanded: false,
+            isExpanded: true,
             settingsWidget: Column(
               spacing: 8,
               children: [
@@ -52,7 +52,7 @@ class SettingsColumn extends StatelessWidget {
           ),
           SettingsWidget(
             settingName: "Equalizer",
-            isExpanded: false,
+            isExpanded: true,
             settingsWidget: Column(
               spacing: 8,
               children: [

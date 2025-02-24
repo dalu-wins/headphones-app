@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:headphones_app/src/core/data/headphones/equalizer_mode.dart';
-import 'package:headphones_app/src/core/data/headphones/headphones.dart';
-import 'package:headphones_app/src/overview/presentation/settings/equalizer/frequency_graph.dart';
+import 'package:headphones_app/src/features/equalizer/domain/equalizer_mode.dart';
+import 'package:headphones_app/src/core/domain/headphones.dart';
+import 'package:headphones_app/src/features/equalizer/presentation/frequency_graph.dart';
 
 class EqualizerWidget extends StatefulWidget {
   final Headphones headphones;

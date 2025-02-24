@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:headphones_app/src/core/data/headphones/headphones.dart';
-import 'package:headphones_app/src/core/data/headphones/noise_status.dart';
-import 'package:headphones_app/src/overview/presentation/music_player/music_bar.dart';
+import 'package:headphones_app/src/core/domain/headphones.dart';
+import 'package:headphones_app/src/features/noise_cancelling/domain/noise_status.dart';
+import 'package:headphones_app/src/features/music_player/presentation/music_bar.dart';
 import 'package:headphones_app/src/overview/presentation/overview_compact.dart';
 import 'package:headphones_app/src/overview/presentation/overview_large.dart';
 import 'package:o3d/o3d.dart';

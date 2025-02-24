@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:headphones_app/src/core/data/headphones/power_status.dart';
+import 'package:headphones_app/src/features/battery_indicator/domain/power_status.dart';
 
 class BatteryIndicator extends StatelessWidget {
   final int batteryPercentage;
