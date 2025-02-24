@@ -51,7 +51,6 @@ class _MusicBarState extends State<MusicBar> {
 
     /// Stream the incoming notification events
     NotificationListenerService.notificationsStream.listen((event) {
-      print("Current notification: $event");
       bool? removed = event.hasRemoved;
       if (removed != null) {
         if (removed) {
