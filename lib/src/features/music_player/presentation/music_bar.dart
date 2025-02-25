@@ -7,10 +7,10 @@ class MusicBar extends StatefulWidget {
   const MusicBar({super.key});
 
   @override
-  _MusicBarState createState() => _MusicBarState();
+  MusicBarState createState() => MusicBarState();
 }
 
-class _MusicBarState extends State<MusicBar> {
+class MusicBarState extends State<MusicBar> {
   String songTitle = "Song Title";
   String artistName = "Artist Name";
 
