@@ -71,6 +71,7 @@ class MusicBarState extends State<MusicBar> {
       List<String> allowed = [
         "com.android.chrome",
         "com.google.android.youtube",
+"com.google.android.apps.youtube.music",
       ];
 
       if (allowed.contains(event.packageName)) {
