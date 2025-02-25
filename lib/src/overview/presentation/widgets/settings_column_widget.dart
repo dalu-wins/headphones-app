@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:headphones_app/src/core/domain/headphones.dart';
 import 'package:headphones_app/src/features/noise_cancelling/domain/noise_status.dart';
 import 'package:headphones_app/src/features/equalizer/presentation/equalizer_widget.dart';
-import 'package:headphones_app/src/features/noise_cancelling/presentation/nc_segmented_button.dart';
-import 'package:headphones_app/src/features/noise_cancelling/presentation/noise_cancelling_bar.dart';
-import 'package:headphones_app/src/features/noise_cancelling/presentation/pass_through_bar.dart';
+import 'package:headphones_app/src/features/noise_cancelling/presentation/noise_cancelling_widget.dart';
 import 'package:headphones_app/src/overview/presentation/widgets/single_settings_widget.dart';
 
 class SettingsColumn extends StatelessWidget {
@@ -32,22 +30,9 @@ class SettingsColumn extends StatelessWidget {
           SettingsWidget(
             settingName: "Ambient Sound",
             isExpanded: true,
-            settingsWidget: Column(
-              spacing: 8,
-              children: [
-                NCSegmentedButton(
-                  noiseCancellingStatus: headphones.noiseCancellingStatus,
-                  onSelectionChanged: setNoiseCancellingStatus,
-                ),
-                NoiseCancellingBar(
-                  noiseLevel: headphones.ncStrength.toDouble(), // Bind to state
-                  onNoiseLevelChanged: setNoiseCancellingStrength,
-                ),
-                PassThroughBar(
-                  passLevel: headphones.ptStrength.toDouble(), // Bind to state
-                  onPassLevelChanged: setPassThroughStrength,
-                ),
-              ],
+            settingsWidget: NoiseCancellingWidget(
+              headphones: headphones,
+              setNoiseCancellingStatus: setNoiseCancellingStatus,
             ),
           ),
           SettingsWidget(
