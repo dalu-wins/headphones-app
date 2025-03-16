@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:headphones_app/src/core/domain/headphones.dart';
 import 'package:headphones_app/src/features/noise_cancelling/domain/noise_status.dart';
 import 'package:headphones_app/src/features/noise_cancelling/presentation/nc_segmented_button.dart';
+import 'package:headphones_app/src/features/noise_cancelling/presentation/strength_chip.dart';
 
 class NoiseCancellingWidget extends StatelessWidget {
   final Headphones headphones;

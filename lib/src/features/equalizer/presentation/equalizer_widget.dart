@@ -47,6 +47,10 @@ class EqualizerWidgetState extends State<EqualizerWidget> {
       spacing: 16,
       children: [
         SizedBox(
+          height: 150,
+          child: FrequencyGraph(frequencies: _frequencies, levels: _levels),
+        ),
+        SizedBox(
           height: 40,
           child: ListView(
             scrollDirection: Axis.horizontal,
@@ -70,10 +74,6 @@ class EqualizerWidgetState extends State<EqualizerWidget> {
               },
             ).toList(),
           ),
-        ),
-        SizedBox(
-          height: 150,
-          child: FrequencyGraph(frequencies: _frequencies, levels: _levels),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

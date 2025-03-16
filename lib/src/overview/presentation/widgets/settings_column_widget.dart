@@ -29,7 +29,6 @@ class SettingsColumn extends StatelessWidget {
         children: [
           SettingsWidget(
             settingName: "Ambient Sound",
-            isExpanded: true,
             settingsWidget: NoiseCancellingWidget(
               headphones: headphones,
               setNoiseCancellingStatus: setNoiseCancellingStatus,
@@ -37,7 +36,6 @@ class SettingsColumn extends StatelessWidget {
           ),
           SettingsWidget(
             settingName: "Equalizer",
-            isExpanded: true,
             settingsWidget: Column(
               spacing: 8,
               children: [
