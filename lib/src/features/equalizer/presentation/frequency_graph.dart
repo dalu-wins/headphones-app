@@ -23,6 +23,7 @@ class FrequencyGraph extends StatelessWidget {
                 frequencies,
                 levels,
                 Theme.of(context).colorScheme.tertiary,
+                Theme.of(context).colorScheme.onSurface,
               ),
             ),
           ),
@@ -36,11 +37,13 @@ class FrequencyGraphPainter extends CustomPainter {
   final List<double> frequencies;
   final List<double> levels;
   final Color barColor;
+  final Color textColor;
 
   FrequencyGraphPainter(
     this.frequencies,
     this.levels,
     this.barColor,
+    this.textColor,
   );
 
   @override
@@ -53,7 +56,8 @@ class FrequencyGraphPainter extends CustomPainter {
       final tp = TextPainter(
         text: TextSpan(
           text: text,
-          style: const TextStyle(
+          style: TextStyle(
+            color: textColor,
             fontSize: 12,
             fontWeight: FontWeight.bold,
           ),
