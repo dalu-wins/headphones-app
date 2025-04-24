@@ -37,7 +37,6 @@ class Headphones {
   }
 }
 
-// TODO: Only for developing / debugging, remove later!
 final Headphones airPodsMax = Headphones(
   "Apple AirPods Max",
   80,
